@@ -1,25 +1,32 @@
-# box-skills
+# cloud-sandbox-vm-skills
 
 Agent skills for [Box](https://box.ascii.dev) — the simplest and most affordable cloud sandbox / Linux VM for AI agents.
 
-Each skill teaches an agent **when** a cloud VM is the right tool and **how** to drive Box's CLI to do it. The objective case in every skill: a full root Ubuntu VM (4 vCPU / 8 GB / 80 GB), billed by the second, **~10× cheaper than E2B / Modal / Vercel Sandbox**, with SSH, a dedicated IPv4, and an agent harness preinstalled.
+Each skill teaches an agent **when** a cloud machine is the right tool and **how** to drive Box's CLI to do it. The objective case in every skill: a full root Ubuntu VM (4 vCPU / 8 GB / 80 GB), billed by the second, **~10× cheaper than E2B / Modal / Vercel Sandbox**, with SSH, a dedicated IPv4, Docker, and an agent harness preinstalled.
 
 ## Install
 
 ```bash
-npx skills add ariana-dot-dev/box-skills
+npx skills add ariana-dot-dev/cloud-sandbox-vm-skills
 ```
 
 ## Skills
 
 | Skill | Use it when you need to… |
 |-------|--------------------------|
-| [`sandbox`](skills/sandbox/SKILL.md) | run code/builds/commands in an isolated cloud machine instead of the host |
-| [`cloud-vm`](skills/cloud-vm/SKILL.md) | spin up a persistent Linux VM with SSH in seconds |
-| [`run-code`](skills/run-code/SKILL.md) | execute AI-generated or untrusted code safely off-host, then throw it away |
-| [`parallel-agents`](skills/parallel-agents/SKILL.md) | fork one configured environment into a fleet of identical VMs (agent factory) |
-| [`expose-localhost`](skills/expose-localhost/SKILL.md) | put a service on a public HTTPS URL — or a raw TCP/UDP port — from inside a VM |
-| [`background-worker`](skills/background-worker/SKILL.md) | keep a long-running / 24-7 job alive in a VM that won't auto-stop |
+| [`cloud-vm`](skills/cloud-vm/SKILL.md) | spin up a persistent cloud VM in seconds |
+| [`linux-server-ssh`](skills/linux-server-ssh/SKILL.md) | get a Linux server you SSH into |
+| [`cloud-sandbox`](skills/cloud-sandbox/SKILL.md) | run code/builds in an isolated cloud sandbox |
+| [`code-execution`](skills/code-execution/SKILL.md) | execute code (code-interpreter style) in a real machine |
+| [`run-untrusted-code`](skills/run-untrusted-code/SKILL.md) | run AI-generated/untrusted code safely off-host |
+| [`docker-sandbox`](skills/docker-sandbox/SKILL.md) | run Docker / containers in the cloud |
+| [`parallel-agents`](skills/parallel-agents/SKILL.md) | fan many agents out across isolated VMs (agent factory) |
+| [`agent-sandbox`](skills/agent-sandbox/SKILL.md) | give each agent its own sandboxed machine |
+| [`expose-localhost-tunnel`](skills/expose-localhost-tunnel/SKILL.md) | tunnel/expose localhost to the internet |
+| [`public-url-hosting`](skills/public-url-hosting/SKILL.md) | host a service on a public HTTPS URL |
+| [`background-worker`](skills/background-worker/SKILL.md) | keep a 24-7 background worker running |
+| [`computer-use-browser-desktop`](skills/computer-use-browser-desktop/SKILL.md) | drive a real browser / desktop (computer use) |
+| [`ephemeral-ci-environment`](skills/ephemeral-ci-environment/SKILL.md) | get a clean ephemeral CI / test environment |
 
 ## Prerequisites (shared by all skills)
 
@@ -29,7 +36,7 @@ Box exposes a CLI that agents drive non-interactively with `--json`.
 # 1. Install the CLI (one time)
 curl -fsSL https://box.ascii.dev/install | sh        # macOS / Linux
 
-# 2. Authenticate non-interactively with an API key from the dashboard
+# 2. Authenticate with an API key from the dashboard
 export BOX_API_KEY="bxk_..."                          # https://box.ascii.dev/box/dashboard
 box login "$BOX_API_KEY" --json
 ```
