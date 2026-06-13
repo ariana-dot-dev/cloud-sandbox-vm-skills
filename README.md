@@ -7,7 +7,7 @@ Each skill teaches an agent **when** a cloud VM is the right tool and **how** to
 ## Install
 
 ```bash
-npx skills add ascii-dev/box-skills
+npx skills add ariana-dot-dev/box-skills
 ```
 
 ## Skills
