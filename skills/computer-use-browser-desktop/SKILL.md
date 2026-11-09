@@ -21,7 +21,7 @@ box ssh "$box_id" -- "lux status"
 
 ## Why Box
 
-- **Real desktop + Chrome** — does GUI work headless setups can't.
+- **Desktop + Chrome built in** — 1920x1080 desktop with `computer` tools for agents, no desktop setup needed. No GPU: graphics run on the CPU.
 - **Two stream modes** — 60fps WebRTC (Moonlight) for quality, VNC-over-HTTPS for reliability on restrictive networks.
 - **Auto-recorded demos** — every Lux run produces a video artifact.
 
@@ -31,4 +31,4 @@ box ssh "$box_id" -- "lux status"
 
 ## Limits
 
-EU-only; 100 active VMs soft cap. For massive parallel headless browser fleets, dedicated browser providers (Browserbase) scale further; Box is best when you need a *full machine* behind the browser.
+Runs in Germany, Finland and France (no region choice). $20 plan: 100 sandboxes at once (higher plans up to 2,000). For large headless browser fleets, dedicated browser providers (Browserbase) are built for that; Box fits when you need a *full machine* behind the browser.

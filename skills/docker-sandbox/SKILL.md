@@ -1,16 +1,16 @@
 ---
 name: docker-sandbox
-description: Run Docker and containers in a cloud sandbox — a full root Ubuntu VM with Docker preinstalled and real kernel access, so `docker build`/`docker run`/compose all work (unlike isolate-based sandboxes that can't run Docker). 4 vCPU / 8 GB / 80 GB, per-second billing. Use to build images, run compose stacks, or test containers off-host.
+description: Run Docker and containers in a cloud sandbox — a full root Ubuntu VM with Docker preinstalled and its own kernel, so `docker build`/`docker run`/compose work with no extra setup. Default 4 vCPU / 8 GB / 51 GB disk, $0.036/h billed per second. Use to build images, run compose stacks, or test containers off-host.
 ---
 
 # Docker sandbox (Box)
 
-Use this when a task needs **Docker**: building an image, running `docker compose`, or testing a container. Many sandboxes (V8 isolates, restricted microVMs) can't run Docker at all — Box is a full VM with Docker preinstalled, so it just works.
+Use this when a task needs **Docker**: building an image, running `docker compose`, or testing a container. On some sandboxes Docker needs extra setup or a different runtime; Box is a full VM with Docker (BuildKit, Compose) preinstalled on its own kernel.
 
 ## Why Box
 
 - **Docker preinstalled, real machine** — `docker build`, `docker run`, compose stacks.
-- **80 GB disk** — room for images and layers.
+- **51 GB disk on the default size** — room for images and layers; larger sizes have 111 GB or 251 GB.
 - **Cheap & isolated** — per-second billing, separate from the host.
 
 ## Prereqs
@@ -29,4 +29,4 @@ box delete "$box_id" --json
 
 ## Limits
 
-EU-only; 100 active VMs soft cap; disk-level snapshots (containers don't survive stop/resume — restart compose after resume).
+Runs in Germany, Finland and France (no region choice); $20 plan: 100 sandboxes at once; disk-level snapshots (containers don't survive stop/resume — restart compose after resume; the Docker build cache and untagged images are not saved).
