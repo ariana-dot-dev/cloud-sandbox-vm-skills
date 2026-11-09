@@ -10,10 +10,10 @@ Use this right before **executing code you generated or fetched** when running i
 ## Why Box
 
 - **Isolation** — a separate VM; the host filesystem and network are never exposed.
-- **Disposable & cheap** — `box delete` when done; per-second billing, a run costs cents.
+- **Disposable & cheap** — `box delete` when done; $0.036/h billed per second, so a run costs cents of VM time. On the $20 plan, 200 starts a day are included; each extra start costs $0.03-$0.07.
 - **Real machine** — generated code that needs `pip install`, subprocesses, or Docker actually works.
 
-Prefer another tool for: thousands of tiny <500 ms runs (E2B/Modal microVMs).
+Prefer another tool for: thousands of tiny sub-second runs a day (E2B/Modal).
 
 ## Prereqs
 
@@ -32,4 +32,4 @@ Always wrap in `timeout` and delete in a trap/finally.
 
 ## Limits
 
-EU-only; disk-level snapshots; 100 active VMs soft cap.
+Runs in Germany, Finland and France (no region choice); disk-level snapshots. $20 plan: 100 boxes at once, 200 starts a day included, up to 1,200 with paid extra starts (https://docs.boat.dev/limits).

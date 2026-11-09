@@ -1,6 +1,6 @@
 ---
 name: public-url-hosting
-description: Host a service on a stable public HTTPS URL straight from a cloud VM — start your app, run one command, get https://<box>-<port>.on.ascii.dev with managed TLS and token-gating. Supports bring-your-own domain and raw TCP/UDP via a dedicated IPv4. Use to host a web app, API, demo, or webhook endpoint without DNS or certificate setup.
+description: Host a service on a stable public HTTPS URL straight from a cloud VM — start your app, run one command, get https://<box>-<port>.on.ascii.dev with managed TLS and token-gating. Raw TCP/UDP ports open on the VM's own IP address. Use to host a web app, API, demo, or webhook endpoint without DNS or certificate setup.
 ---
 
 # Public URL hosting (Box)
@@ -16,13 +16,13 @@ box ssh "$box_id" -- "host 8080 --public --title 'my app'"
 box ssh "$box_id" -- "host url 8080"                        # https://<box>-8080.on.ascii.dev
 ```
 
-`host` URLs are token-gated by default; `--public` makes them open. A dedicated IPv4 + full TCP/UDP means you can also point your own domain or host non-HTTP services.
+`host` URLs are token-gated by default; `--public` makes them open. For a non-HTTP service, open a raw TCP/UDP port on the VM's IP address (IPv6 only on boxes without their own IPv4; the IP changes at each resume). Custom domains are not supported: put your own reverse proxy or CDN in front of the HTTPS URL.
 
 ## Why Box
 
 - **Zero infra** — TLS + subdomain + auth managed for you.
-- **Stays up** — `--no-auto-stop` keeps the host alive 24-7; persists across resume.
-- **Cheap** — per-second billing, ~10× cheaper than typical sandbox/host providers.
+- **Stays up** — `--no-auto-stop` (paid plan) keeps the host alive 24-7; the URL persists across resume.
+- **Flat per-hour price** — $0.036/h for 4 vCPU / 8 GB, about $26/mo always on, billed per second, from a $20/mo plan (https://docs.boat.dev/pricing).
 
 ## Prereqs
 
@@ -30,4 +30,4 @@ box ssh "$box_id" -- "host url 8080"                        # https://<box>-8080
 
 ## Limits
 
-EU-only; 100 active VMs soft cap. For multi-region CDN-grade hosting, use a dedicated host; Box is best for single-VM services, previews, and demos.
+Runs in Germany, Finland and France (no region choice); $20 plan: 100 boxes at once. For multi-region CDN-grade hosting, use a dedicated host; Box fits single-VM services, previews, and demos.

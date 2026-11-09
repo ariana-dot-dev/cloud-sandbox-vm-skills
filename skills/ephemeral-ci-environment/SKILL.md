@@ -11,7 +11,7 @@ Use this when you need a **clean, throwaway environment** to test a repo, run a 
 
 - **Pristine + reproducible** — fresh VM per run; no leftover state.
 - **Batteries included** — Docker + Node/Python/Go/Rust/Java/etc. already there; repo auto-clones in.
-- **Cheap per run** — per-second billing; a test run costs cents, and you `box delete` after.
+- **Cheap per run** — $0.036/h billed per second; a test run costs cents of VM time, and you `box delete` after. On the $20 plan, 200 starts a day are included; each extra start costs $0.03-$0.07.
 
 ## Prereqs
 
@@ -28,4 +28,4 @@ box ssh "$box_id" -- "cat /project/junit.xml" > junit.xml      # pull results ba
 
 ## Limits
 
-EU-only; 100 active VMs soft cap. For thousands of <500 ms parallel CI shards, dedicated CI runners scale further; Box is best for full-machine, Docker-capable, reproducible runs.
+Runs in Germany, Finland and France (no region choice). $20 plan: 100 sandboxes at once and 200 starts a day included (higher plans up to 2,000 at once; https://docs.boat.dev/limits). For thousands of short parallel CI shards a day, dedicated CI runners may fit better; Box is best for full-machine, Docker-capable, reproducible runs.

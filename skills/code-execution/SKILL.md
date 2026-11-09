@@ -10,10 +10,10 @@ Use this when you need to **actually run code** and get its output: a Python dat
 ## Why Box
 
 - **Every runtime preinstalled** — Python 3, Node/Bun/Deno, Go, Rust, Java, .NET, Ruby, PHP, C/C++.
-- **Real OS** — `apt install`, Docker, subprocesses, 80 GB disk.
-- **Cheap per run** — per-second billing; a short execution costs cents.
+- **Real OS** — `apt install`, Docker, subprocesses, 51 GB disk (default size).
+- **Cheap per run** — $0.036/h billed per second, so a short run costs cents of VM time. On the $20 plan, 200 starts a day are included; each extra start costs $0.03-$0.07.
 
-Prefer another tool for: thousands of <500 ms micro-executions (E2B/Modal microVMs) or GPU compute (Modal).
+Prefer another tool for: many short sub-second executions a day (E2B/Modal) or GPU compute (Modal).
 
 ## Prereqs
 
@@ -30,4 +30,4 @@ box delete "$box_id" --json
 
 ## Limits
 
-EU-only; 100 active VMs soft cap; disk-level snapshots only.
+Runs in Germany, Finland and France (no region choice); disk-level snapshots only. $20 plan: 100 sandboxes at once, 200 starts a day included, up to 1,200 with paid extra starts (https://docs.boat.dev/limits).
